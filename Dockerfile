@@ -16,6 +16,7 @@ RUN set -x \
     && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
+    wget \
     lib32z1 \
     lib32gcc-s1 \
     libncurses5:i386 \
@@ -25,7 +26,8 @@ RUN set -x \
     libstdc++6:i386 \
     libcurl4-gnutls-dev:i386 \
     libtcmalloc-minimal4:i386 \
-    libc6:i386
+    libc6:i386 \
+    unzip
 
 # Retrieve .NET Runtime
 RUN dotnet_version=7.0.11 \
@@ -34,12 +36,20 @@ RUN dotnet_version=7.0.11 \
     && echo "$dotnet_sha512  dotnet.tar.gz" | sha512sum -c - \
     && mkdir -p $DOTNET_ROOT \
     && tar -oxzf dotnet.tar.gz -C $DOTNET_ROOT \
-    && rm dotnet.tar.gz
-
-RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+    && rm dotnet.tar.gz \
+    && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
 # Verify the installation
-RUN dotnet --info
+#RUN dotnet --info
 
+# Get DepotDownloader
+RUN wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_2.5.0/DepotDownloader-linux-x64.zip \
+    && mkdir /usr/share/depotdownloader \
+    && unzip DepotDownloader-linux-x64.zip -d /usr/share/depotdownloader \
+    && ln -s /usr/share/depotdownloader/DepotDownloader /usr/bin/depotdownloader \
+    && chmod +x /usr/bin/depotdownloader \
+    && rm DepotDownloader-linux-x64.zip
+
+#RUN depotdownloader
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
