@@ -27,7 +27,9 @@ RUN set -x \
     libcurl4-gnutls-dev:i386 \
     libtcmalloc-minimal4:i386 \
     libc6:i386 \
-    unzip
+    unzip \
+    # Add srcds user and such
+    && useradd -ms /bin/bash -u 1000 srcds
 
 # Retrieve .NET Runtime
 RUN dotnet_version=7.0.11 \
