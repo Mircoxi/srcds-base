@@ -20,7 +20,7 @@ FROM ghcr.io/mircoxi/srcds-base:latest
 USER srcds
 
 RUN depotdownloader -app 232250 -os linux -osarch 32 -max-downloads 8 -dir ~/tf2
-RUN mv ~/sourcemod/* ~/tf2/
+RUN mv ~/sourcemod/* ~/tf2/tf
 ```
 
 The Dockerfiles for pre-built images are below.
