@@ -43,7 +43,7 @@ RUN dotnet_version=7.0.11 \
     && rm dotnet.tar.gz \
     && ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
 
-# Verify the installation
+# Uncomment if you need to verify the installation, but re-comment for production builds since this adds a layer.
 #RUN dotnet --info
 
 # Get DepotDownloader
@@ -54,6 +54,8 @@ RUN wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownl
     && chmod +x /usr/bin/depotdownloader \
     && rm DepotDownloader-linux-x64.zip
 
+# Uncomment if you need to verify the installation, but re-comment for production builds - there's no flags, so this
+# WILL error out of the build. It's just here to make sure things work.
 #RUN depotdownloader
 
 
