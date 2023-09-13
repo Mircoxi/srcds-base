@@ -28,6 +28,8 @@ RUN set -x \
     libtcmalloc-minimal4:i386 \
     libc6:i386 \
     unzip \
+    libicu72 \
+    libicu-dev \
     # Add srcds user and such
     && useradd -ms /bin/bash -u 1000 srcds \
     # Clean up
