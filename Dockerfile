@@ -60,6 +60,18 @@ RUN wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownl
 # WILL error out of the build. It's just here to make sure things work.
 #RUN depotdownloader
 
+USER srcds
+
+WORKDIR /home/srcds
+
+RUN mkdir ~/sourcemod \
+    && wget https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1148-linux.tar.gz \
+    && tar -oxzf mmsource-1.11.0-git1148-linux.tar.gz -C ~/sourcemod \
+    && rm mmsource-1.11.0-git1148-linux.tar.gz \
+    && wget https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6936-linux.tar.gz \
+    && tar -oxzf sourcemod-1.11.0-git6936-linux.tar.gz -C ~/sourcemod \
+    && rm sourcemod-1.11.0-git6936-linux.tar.gz
+
 
 LABEL \
   maintainer="Jess Stingray <jess@mircoxi.com>" \
