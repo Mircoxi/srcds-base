@@ -72,6 +72,11 @@ RUN mkdir ~/sourcemod \
     && tar -oxzf sourcemod-1.11.0-git6936-linux.tar.gz -C ~/sourcemod \
     && rm sourcemod-1.11.0-git6936-linux.tar.gz
 
+# For one-off servers this is fine. If you're multi-servering (shut up, that's a word), it's recommended to use host \
+# networking mode instead so your deployment script can just increment port numbers by whatever factor you feel like.
+EXPOSE 27015/tcp \
+	27015/udp \
+	27020/udp
 
 LABEL \
   maintainer="Jess Stingray <jess@mircoxi.com>" \
