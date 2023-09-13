@@ -66,6 +66,6 @@ LABEL \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.url="https://mircoxi.com/" \
   org.opencontainers.image.source="https://github.com/Mircoxi/srcds-base/" \
-  org.opencontainers.image.documentation="https://github.com/Mircoxi/srcds-base/blob/master/README.md" \
+  org.opencontainers.image.documentation="https://github.com/Mircoxi/srcds-base/blob/main/README.md" \
   org.opencontainers.image.revision="master" \
   org.opencontainers.image.version="latest"
