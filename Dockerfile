@@ -29,7 +29,9 @@ RUN set -x \
     libc6:i386 \
     unzip \
     # Add srcds user and such
-    && useradd -ms /bin/bash -u 1000 srcds
+    && useradd -ms /bin/bash -u 1000 srcds \
+    # Clean up
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Retrieve .NET Runtime
 RUN dotnet_version=7.0.11 \
@@ -53,8 +55,6 @@ RUN wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownl
     && rm DepotDownloader-linux-x64.zip
 
 #RUN depotdownloader
-# Clean up
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 
 LABEL \
